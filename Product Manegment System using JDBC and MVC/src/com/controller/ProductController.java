@@ -60,7 +60,7 @@ public class ProductController {
 
 	}
 
-	public void updateProducts(int updateID) throws SQLException, ClassNotFoundException {
+	public void updateProducts() throws SQLException, ClassNotFoundException {
 
 		ProductController.Connection();
 		System.out.println("Avaialable Product Details :-");
@@ -68,6 +68,8 @@ public class ProductController {
 
 		String sql = "Select * from products";
 
+		System.out.println("Enter Update ID");
+		int updateID=sc.nextInt();
 		Statement smt = Connection().createStatement();
 		ResultSet rs = smt.executeQuery(sql);
 		while (rs.next()) {
@@ -87,10 +89,9 @@ public class ProductController {
 					switch (str) {
 					case "A":
 						System.out.println("Enter name to update");
-						updatename = sc.next();
-						System.out.println("Enter a id which u want to update:");
-						int id = sc.nextInt();
-						String sql1 = "update products set name ='" + updatename + "' where id='" + id + "'";
+						updatename1 = sc.next();
+						
+						String sql1 = "update products set name ='" + updatename1 + "' where id='" + updateID + "'";
 						smt = Connection().createStatement();
 						smt.execute(sql1);
 						Connection().close();
@@ -100,9 +101,7 @@ public class ProductController {
 					case "B":
 						System.out.println("enter price to update :");
 						price = sc.nextDouble();
-						System.out.println("Enter a id which u want to update");
-						int id1 = sc.nextInt();
-						String sql2 = "update products set price ='" + price + "' where id='" + id1 + "'";
+						String sql2 = "update products set price ='" + price + "' where id='" + updateID + "'";
 						smt = Connection().createStatement();
 						smt.execute(sql2);
 						Connection().close();
@@ -112,9 +111,7 @@ public class ProductController {
 					case "C":
 						System.out.println("enter quantity to update");
 						quantity = sc.nextInt();
-						System.out.println("Enter a id which u want to update");
-						int id2 = sc.nextInt();
-						String sql3 = "update products set quantity ='" + quantity + "' where id='" + id2 + "'";
+						String sql3 = "update products set quantity ='" + quantity + "' where id='" + updateID + "'";
 						smt = Connection().createStatement();
 						smt.execute(sql3);
 						Connection().close();
