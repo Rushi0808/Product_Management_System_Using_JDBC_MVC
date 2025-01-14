@@ -35,7 +35,7 @@ public class ProductView {
 				break;
 
 			case 3:
-				p.updateProducts(choice);
+				p.updateProducts();
 				break;
 
 			case 4:
